@@ -5,13 +5,14 @@ from pydantic import BaseModel
 import torch
 import torch.nn as nn
 import json
+import os
 import numpy as np
 import base64
 import google.generativeai as genai
 from mediapipe_utils import video_to_keypoints_sequence
 
 # ========================= CONFIG =========================
-genai.configure(api_key="AIzaSyCGVF4Wo9LTsG4z_TDogq640MdNVmlItP4")
+genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 gemini = genai.GenerativeModel("gemini-2.5-flash")
 
 with open("label_map.json") as f:
